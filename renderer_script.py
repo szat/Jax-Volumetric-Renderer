@@ -39,8 +39,9 @@ npy_links[npy_links < 0] = 0
 # Here we take only one channel npy_sh_data[:,:,:,:9]
 npy_density_data = npy_density_data[npy_links[::4, ::4, ::4]]
 npy_sh_data = npy_sh_data[npy_links[::4, ::4, ::4]]
-npy_sh_data = npy_sh_data[:,:,:,:9]
-npy_data = np.concatenate((npy_density_data, npy_sh_data), axis=3)
+npy_sh_data_c1 = npy_sh_data[:,:,:,:9]
+npy_sh_data_c2 = npy_sh_data[:,:,:,9:18]
+npy_sh_data_c3 = npy_sh_data[:,:,:,18:]
 
 origin = np.array([size_model + 20., size_model + 20., size_model + 20.])
 orientation = np.array([-1., -1., -1.])
@@ -199,27 +200,40 @@ def render_slim_c1(xxx, npy_data_in):
 
 render_slim_jit_c1 = jit(vmap(render_slim_c1, in_axes=(0, None)))
 
-batch_size = 50000
-batch_nb = jnp.ceil(len(xx) / batch_size)
+def render_wrapper(x, npy_density_data, npy_sh_data):
+    npy_data = np.concatenate((npy_density_data, npy_sh_data), axis=3)
 
-tmp_rgb_c1_slim = []
-for i in range(int(batch_nb - 1)):
-    res = render_slim_jit_c1(xx[i * batch_size: (i + 1) * batch_size], npy_data)
-    res.block_until_ready()
-    tmp_rgb_c1_slim.append(res)
+    batch_size = 50000
+    batch_nb = jnp.ceil(len(x) / batch_size)
 
-res = render_slim_jit_c1(xx[int((batch_nb - 1) * batch_size):], npy_data)
-tmp_rgb_c1_slim.append(res)
-colors_c1_slim = np.concatenate(tmp_rgb_c1_slim)
+    tmp_rgb_slim = []
+    for i in range(int(batch_nb - 1)):
+        res = render_slim_jit_c1(x[i * batch_size: (i + 1) * batch_size], npy_data)
+        res.block_until_ready()
+        tmp_rgb_slim.append(res)
 
-complete_colors_c1_slim = np.zeros((rays_origins.shape[0], 1))
+    res = render_slim_jit_c1(x[int((batch_nb - 1) * batch_size):], npy_data)
+    tmp_rgb_slim.append(res)
+    colors_c1_slim = np.concatenate(tmp_rgb_slim)
 
-tmp_mask = np.zeros_like(mask)
-tmp_mask[mask] = 1
-tmp_mask[tmp_mask == 1] = mask_box
-complete_colors_c1_slim[tmp_mask] = colors_c1_slim
-complete_colors_c1_slim[complete_colors_c1_slim > 1] = 1
-complete_colors_c1_slim[complete_colors_c1_slim < 0] = 0
+    complete_colors_slim = np.zeros((rays_origins.shape[0], 1))
 
-img_c1_slim = complete_colors_c1_slim.reshape([800,800,1])
+    tmp_mask = np.zeros_like(mask)
+    tmp_mask[mask] = 1
+    tmp_mask[tmp_mask == 1] = mask_box
+    complete_colors_slim[tmp_mask] = colors_c1_slim
+    complete_colors_slim[complete_colors_slim > 1] = 1
+    complete_colors_slim[complete_colors_slim < 0] = 0
+
+    img_slim = complete_colors_slim.reshape([800,800,1])
+    return img_slim
+
+img_c1 = render_wrapper(xx, npy_density_data, npy_sh_data_c1)
+img_c2 = render_wrapper(xx, npy_density_data, npy_sh_data_c2)
+img_c3 = render_wrapper(xx, npy_density_data, npy_sh_data_c3)
+
+import cv2
+img = np.concatenate([img_c1, img_c2, img_c3], axis=2)
+img = (img * 255).astype(np.uint8)
+img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
