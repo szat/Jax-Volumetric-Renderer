@@ -29,7 +29,7 @@ To have all the requirements installed, you need:
 - Jax
 - Opencv
 - Numpy
-- Open3d
+- Open3d, just to visualize some stuff. 
 
 Tips to install Jax:
 - Follow the steps on the website: https://jax.readthedocs.io/en/latest/installation.html
