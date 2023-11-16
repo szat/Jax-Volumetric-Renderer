@@ -1,6 +1,13 @@
 # Jax-Volumetric-Renderer
 A Jax based renderer for plenoxels, work in progress...
 
+<p>
+  <img src=![Screenshot from 2023-11-16 13-32-49](https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/5a6c8778-d64f-4852-8280-39b1cee3e350)
+ width="300" height="300" />
+  <img src=![img_c1_slim](https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/16f4c186-9292-4215-a78c-ea03be6ccd33)
+ width="300" height="300" />
+</p>
+
 ![Screenshot from 2023-11-16 13-32-49](https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/5a6c8778-d64f-4852-8280-39b1cee3e350)
 
 ![img_c1_slim](https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/16f4c186-9292-4215-a78c-ea03be6ccd33)
