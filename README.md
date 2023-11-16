@@ -3,14 +3,10 @@ A Jax based renderer for plenoxels, work in progress...
 
 <p>
   <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/5a6c8778-d64f-4852-8280-39b1cee3e350"
- width="300" height="300" />
+ width="500" height="300" />
   <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/16f4c186-9292-4215-a78c-ea03be6ccd33"
  width="300" height="300" />
 </p>
-
-![Screenshot from 2023-11-16 13-32-49](https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/5a6c8778-d64f-4852-8280-39b1cee3e350)
-
-![img_c1_slim](https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/16f4c186-9292-4215-a78c-ea03be6ccd33)
 
 This is an ongoing project on Plenoxels, for didactic purposes, from this paper: https://alexyu.net/plenoxels/
 
@@ -44,3 +40,22 @@ TODO:
 - Make python install wheel
 - Work on the optimization/training steps
 - Get a GPU with more VRAM
+
+  Bloopers:
+<p>
+  <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/bb131ec4-68b6-4b45-a08e-65b68a22c5b9"
+ width="500" height="300" />
+  <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/a9614103-b6e9-42af-927c-d9e281cd85c6"
+ width="300" height="300" />
+    <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/972565ad-d358-4359-a2e5-160ee6ef6a96"
+ width="300" height="300" />
+</p>
+
+<p>
+  <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/acc4034c-0e94-4870-819c-ebcfc9857b5a"
+ width="500" height="300" />
+  <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/49772b83-79c4-439d-b865-a2a6731b549d"
+ width="300" height="300" />
+    <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/acbae107-d3cb-4b41-bf59-d23b428a3edd"
+ width="300" height="300" />
+</p>
