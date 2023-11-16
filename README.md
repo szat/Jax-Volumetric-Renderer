@@ -6,8 +6,9 @@ A Jax based renderer for plenoxels, work in progress...
  width="500" height="300" />
   <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/16f4c186-9292-4215-a78c-ea03be6ccd33"
  width="300" height="300" />
-</p>
-
+    <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/78dc14d3-1902-4c0f-9b2a-d1d9568659cf"
+ width="300" height="300" />
+  
 This is an ongoing project on Plenoxels, for didactic purposes, from this paper: https://alexyu.net/plenoxels/
 
 I am attempting to make a fast renderer in Jax, but using only a 8gb GPU. The full models as are 512x512x512, but we render only
@@ -36,12 +37,13 @@ Tips to install Jax:
 - If you call both TF2 or Torch as you call Jax (or even import them) you will likely run out of memory. They don't like each other.
 
 TODO: 
+- Figure out where the random black dots are coming from on the render
 - Provide install script
 - Make python install wheel
 - Work on the optimization/training steps
 - Get a GPU with more VRAM
 
-  Bloopers:
+Bloopers:
   
 <p>
   <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/bb131ec4-68b6-4b45-a08e-65b68a22c5b9"
