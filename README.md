@@ -3,11 +3,11 @@ A Jax based renderer for plenoxels, work in progress...
 
 <p>
   <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/5a6c8778-d64f-4852-8280-39b1cee3e350"
- width="300" height="300" />
+ width="300" height="200" />
   <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/16f4c186-9292-4215-a78c-ea03be6ccd33"
- width="300" height="300" />
+ width="200" height="200" />
     <img src="https://github.com/szat/Jax-Volumetric-Renderer/assets/5555551/78dc14d3-1902-4c0f-9b2a-d1d9568659cf"
- width="300" height="300" />
+ width="200" height="200" />
   
 This is an ongoing project on Plenoxels, for didactic purposes, from this paper: https://alexyu.net/plenoxels/
 
